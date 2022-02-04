@@ -1,6 +1,7 @@
 package kea.sem3.jwtdemo.repositories;
 
 import kea.sem3.jwtdemo.entity.Member;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ class MemberRepositoryTest {
     @Autowired
     MemberRepository memberRepository;
 
-    @BeforeEach
+    @BeforeAll
     void setUp() {
         memberRepository.save(new Member("Testx", "xx@mail.com","test12","testx"));
         memberRepository.save(new Member("Testy", "xy@mail.com","test12","testy"));
