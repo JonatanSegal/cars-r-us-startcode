@@ -1,5 +1,7 @@
 package kea.sem3.jwtdemo.entity;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -12,9 +14,11 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @CreationTimestamp
     @Column(nullable = false)
-    @CreatedDate
     private Date reservationDate;
+
+    @UpdateTimestamp
     @Column(nullable = false)
     private Date rentalDate;
 
