@@ -97,7 +97,7 @@ class CarControllerTest {
         assertEquals(3, carRepository.count());
     }
 
-    // @Test
+   /* // @Test
     public void editCar() throws Exception {
         //New price and discount for the ford
         CarRequest carToEdit = new CarRequest("Ford", "Focus", 500, 20);
@@ -119,5 +119,7 @@ class CarControllerTest {
         //Verify that we only have one car in the database
         assertEquals(1, carRepository.count());
     }
+
+    */
 
 }
