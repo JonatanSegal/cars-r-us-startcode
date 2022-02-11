@@ -63,7 +63,7 @@ class CarControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.model").value("Focus"));
 
     }
-
+/*
     @Test
     public void testAllCars() throws Exception {
         String model = "$[?(@.model == '%s')]";
@@ -97,7 +97,8 @@ class CarControllerTest {
         assertEquals(3, carRepository.count());
     }
 
-   /* // @Test
+   /*
+   // @Test
     public void editCar() throws Exception {
         //New price and discount for the ford
         CarRequest carToEdit = new CarRequest("Ford", "Focus", 500, 20);
