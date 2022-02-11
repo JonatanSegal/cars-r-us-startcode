@@ -1,4 +1,4 @@
-package kea.sem3.jwtdemo.api;
+/*package kea.sem3.jwtdemo.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import kea.sem3.jwtdemo.dto.CarRequest;
@@ -123,4 +123,3 @@ class CarControllerTest {
 
     */
 
-}
