@@ -14,7 +14,7 @@ class MemberRepositoryTest {
     @Autowired
     MemberRepository memberRepository;
 
-    @BeforeAll
+    @BeforeEach
     void setUp() {
         memberRepository.save(new Member("Testx", "xx@mail.com","test12","testx"));
         memberRepository.save(new Member("Testy", "xy@mail.com","test12","testy"));
