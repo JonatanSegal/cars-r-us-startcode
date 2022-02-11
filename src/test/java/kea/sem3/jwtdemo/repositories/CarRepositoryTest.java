@@ -18,8 +18,9 @@ class CarRepositoryTest {
 
     @BeforeAll
     static void setUp(@Autowired CarRepository carRepository) {
-        carId1= carRepository.save(new Car("BMW","i8",15000)).getId();
-        carId2 = carRepository.save(new Car("Tesla","model X",7500)).getId();
+        carRepository.deleteAll();
+        carId1= carRepository.save(new Car("BMW","i8",15000,5000)).getId();
+        carId2 = carRepository.save(new Car("Tesla","model X",7500,500)).getId();
     }
     @Test
     public void testCount(){

@@ -48,7 +48,7 @@ public class Car {
         this.brand = body.getBrand();
         this.model = body.getModel();
         this.pricePrDay = body.getPricePrDay();
-        this.discount = body.getBestDiscount();
+        this.discount = body.getDiscount();
     }
 
     @Override
