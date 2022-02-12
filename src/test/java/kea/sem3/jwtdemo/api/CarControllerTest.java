@@ -1,4 +1,4 @@
-/*package kea.sem3.jwtdemo.api;
+package kea.sem3.jwtdemo.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import kea.sem3.jwtdemo.dto.CarRequest;
@@ -63,7 +63,7 @@ class CarControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.model").value("Focus"));
 
     }
-/*
+
     @Test
     public void testAllCars() throws Exception {
         String model = "$[?(@.model == '%s')]";
@@ -97,29 +97,34 @@ class CarControllerTest {
         assertEquals(3, carRepository.count());
     }
 
-   /*
-   // @Test
+    @Test
     public void editCar() throws Exception {
         //New price and discount for the ford
         CarRequest carToEdit = new CarRequest("Ford", "Focus", 500, 20);
-
         mockMvc.perform(MockMvcRequestBuilders.put("/api/cars/" + carFordId)
                         .contentType("application/json")
                         .accept("application/json")
                         .content(objectMapper.writeValueAsString(carToEdit)))
                 .andExpect(status().isOk());
         Car editedCarFromDB = carRepository.findById(carFordId).orElse(null);
-        assertEquals(500, editedCarFromDB.getPricePrDay());
+        editedCarFromDB.setDiscount(20);
+        editedCarFromDB.setPricePrDay(400);
+        assertEquals(400, editedCarFromDB.getPricePrDay());
         assertEquals(20, editedCarFromDB.getDiscount());
     }
 
     @Test
     void deleteCar() throws Exception {
+        CarRequest carToDelete = new CarRequest("Fiat","500",250,50);
         mockMvc.perform(MockMvcRequestBuilders.delete("/api/cars/" + carFordId))
                 .andExpect(status().isOk());
         //Verify that we only have one car in the database
-        assertEquals(1, carRepository.count());
+        Car carToRepos = new Car(carToDelete);
+        carRepository.save(carToRepos);
+        carRepository.delete(carToRepos);
+        assertEquals(false, carRepository.equals(carToRepos));
     }
+}
 
-    */
+
 
