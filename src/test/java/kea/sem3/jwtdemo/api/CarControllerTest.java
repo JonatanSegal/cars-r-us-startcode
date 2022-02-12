@@ -43,6 +43,7 @@ class CarControllerTest {
 
     @BeforeEach
     public void setup() {
+        carRepository.deleteAll();
         carFordId = carRepository.save(new Car("Ford", "Focus", 400, 10)).getId();
         carSuzukiId = carRepository.save(new Car("Suzuki", "Vitara", 500, 14)).getId();
     }
@@ -107,6 +108,7 @@ class CarControllerTest {
                         .content(objectMapper.writeValueAsString(carToEdit)))
                 .andExpect(status().isOk());
         Car editedCarFromDB = carRepository.findById(carFordId).orElse(null);
+        assert editedCarFromDB != null;
         editedCarFromDB.setDiscount(20);
         editedCarFromDB.setPricePrDay(400);
         assertEquals(400, editedCarFromDB.getPricePrDay());
