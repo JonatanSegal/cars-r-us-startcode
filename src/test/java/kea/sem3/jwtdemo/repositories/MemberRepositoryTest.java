@@ -14,10 +14,11 @@ class MemberRepositoryTest {
     @Autowired
     MemberRepository memberRepository;
 
-    @BeforeEach
-    void setUp() {
-        memberRepository.save(new Member("Testx", "xx@mail.com","test12","testx"));
-        memberRepository.save(new Member("Testy", "xy@mail.com","test12","testy"));
+    @BeforeAll
+    static void setUp(@Autowired MemberRepository memberRepository) {
+
+        memberRepository.save(new Member("aa","aa@a.dk","test12","Kurt","Wonnegut","a vej 12","Lyngby","2800"));
+        memberRepository.save(new Member("bb","bb@a.dk","test12","Hanne","Wonnegut","b vej 12","Lyngby","2800"));
     }
     @Test
     public void testCount(){

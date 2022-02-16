@@ -8,6 +8,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -33,6 +35,13 @@ public class Car {
 
     @UpdateTimestamp
     LocalDateTime edited;
+
+    @OneToMany(mappedBy = "reservedCar")
+    private Set<Reservation> reservations = new HashSet<>();
+
+    public void addReservation(Reservation res){
+        reservations.add(res);
+    }
 
     public Car(String brand, String model, double pricePrDay, double discount) {
         this.brand = brand;

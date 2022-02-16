@@ -28,10 +28,20 @@ public class CarService {
         Car carNew = carRepository.save(new Car(body));
         return new CarResponse(carNew,true);
     }
-    public CarResponse editCar(CarRequest body,int id){
-        return null;
+    public CarResponse editCar(CarRequest body,int id) throws Exception{
+        Car carToEdit = carRepository.findById(id).orElseThrow(()->new Client4xxException("No car with this id exists"));
+        carToEdit.setPricePrDay(body.getPricePrDay());
+        carRepository.save(carToEdit);
+        return new CarResponse(carToEdit,false);
     }
-    public void deleteCar(int id) {
 
+    public void deleteCar(int id) {
+        carRepository.deleteById(id);
+    }
+
+    public void updatePrice(int id,double newPrice){
+        Car carToUpdate = carRepository.getById(id);
+        carToUpdate.setPricePrDay(newPrice);
+        carRepository.save(carToUpdate);
     }
 }

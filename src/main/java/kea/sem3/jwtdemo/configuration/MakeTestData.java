@@ -32,7 +32,6 @@ public class MakeTestData implements ApplicationRunner {
         user.addRole(Role.USER);
         BaseUser admin = new BaseUser("admin", "admin@a.dk", "test12");
         admin.addRole(Role.ADMIN);
-
         BaseUser both = new BaseUser("user_admin", "both@a.dk", "test12");
         both.addRole(Role.USER);
         both.addRole(Role.ADMIN);
@@ -41,9 +40,16 @@ public class MakeTestData implements ApplicationRunner {
         userRepository.save(admin);
         userRepository.save(both);
 
-        Member m1 = new Member("Member1","test@mail.com","test12","Meme");
-        m1.addRole(Role.USER);
-        memberRepository.save(m1);
+
+        memberRepository.save(new Member("KW","kw@a.dk","test12","Kurt","Wonnegut","Lyngbyvje 34","Lyngby","2800"));
+        memberRepository.save(new Member("HW","hw@a.dk","test12","Hanne","Wonnegut","Lyngbyvje 34","Lyngby","2800"));
+
+        carRepository.save(new Car("Volvo", "C40", 560,10));
+        carRepository.save(new Car("Volvo", "V70", 500,10));
+        carRepository.save(new Car("Volvo", "V49", 400,10));
+        carRepository.save(new Car("Suzuki", "Vitara", 500,14));
+        carRepository.save(new Car("Suzuki", "Vitara", 500,14));
+        carRepository.save(new Car("Suzuki", "S-Cross", 500,14));
 
         System.out.println("########################################################################################");
         System.out.println("########################################################################################");
