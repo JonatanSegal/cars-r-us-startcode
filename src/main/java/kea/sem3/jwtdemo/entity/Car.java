@@ -36,7 +36,8 @@ public class Car {
     @UpdateTimestamp
     LocalDateTime edited;
 
-    @OneToMany(mappedBy = "reservedCar")
+    //If problems related to transactional, then use FetchType Eager
+    @OneToMany(mappedBy = "reservedCar", fetch = FetchType.EAGER)
     private Set<Reservation> reservations = new HashSet<>();
 
     public void addReservation(Reservation res){

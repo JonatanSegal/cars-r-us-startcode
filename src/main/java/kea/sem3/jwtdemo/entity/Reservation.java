@@ -1,13 +1,10 @@
 package kea.sem3.jwtdemo.entity;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 public class Reservation {
@@ -17,9 +14,9 @@ public class Reservation {
 
     @CreationTimestamp
     @Column(nullable = false)
-    private LocalDateTime reservationDate;
+    private LocalDate reservationDate;
 
-    private LocalDateTime rentalDate;
+    private LocalDate rentalDate;
 
     @ManyToOne
     Car reservedCar;
@@ -27,10 +24,12 @@ public class Reservation {
     @ManyToOne
     Member reservedBy;
 
-    public Reservation(LocalDateTime date,Car reservedCar, Member reservedBy){
+    public Reservation(LocalDate date, Car reservedCar, Member reservedBy){
         this.rentalDate = date;
         this.reservedCar = reservedCar;
         this.reservedBy = reservedBy;
+        reservedCar.addReservation(this);
+        reservedCar.addReservation(this);
     }
 
     public Reservation() {
