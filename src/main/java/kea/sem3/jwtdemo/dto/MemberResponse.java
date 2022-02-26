@@ -2,6 +2,7 @@ package kea.sem3.jwtdemo.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import kea.sem3.jwtdemo.entity.Car;
 import kea.sem3.jwtdemo.entity.Member;
 import kea.sem3.jwtdemo.entity.Role;
 import lombok.AllArgsConstructor;
@@ -60,6 +61,15 @@ public class MemberResponse {
             this.isApproved = m.isApproved();
             this.ranking = m.getRanking();
         }
+    }
+
+    public static List<MemberResponse> getMembersFromEntities(List<Member> members){
+        //We will do this together
+        return members.stream().map(member-> new MemberResponse(member,false)).collect(Collectors.toList());
+    }
+
+    public String getFullName(){
+        return getFirstName()+getLastName();
     }
 
 

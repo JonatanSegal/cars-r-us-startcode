@@ -69,4 +69,8 @@ public class Member extends BaseUser {
 
     public Member() {}
 
+    public String getFullName(){
+        return getFirstName()+getLastName();
+    }
+
 }
