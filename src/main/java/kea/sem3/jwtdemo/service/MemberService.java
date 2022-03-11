@@ -8,6 +8,7 @@ import kea.sem3.jwtdemo.entity.Car;
 import kea.sem3.jwtdemo.entity.Member;
 import kea.sem3.jwtdemo.error.Client4xxException;
 import kea.sem3.jwtdemo.repositories.MemberRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,8 +26,8 @@ public class MemberService {
         return MemberResponse.getMembersFromEntities(members);
     }
 
-    public MemberResponse getMember(String fullName, boolean all) throws Exception{
-        Member member = memberRepository.findById(fullName).orElseThrow(()->new Client4xxException("No member with this id exists"));
+    public MemberResponse getMemberByUserName(String username) {
+        Member member = memberRepository.findById(username).orElseThrow(() -> new Client4xxException("User not found", HttpStatus.NOT_FOUND));
         return new MemberResponse(member,false);
     }
 

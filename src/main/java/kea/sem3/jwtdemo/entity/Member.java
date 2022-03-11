@@ -44,6 +44,8 @@ public class Member extends BaseUser {
     //Number between 0 and 10, ranking the customer
     byte ranking;
 
+    String fullName;
+
 
     @OneToMany(mappedBy = "reservedBy")
     private Set<Reservation> reservations = new HashSet<>();
@@ -60,6 +62,7 @@ public class Member extends BaseUser {
         this.zip = zip;
         ranking = 5; //Initial ranking
         isApproved = false;
+        this.fullName = getFullName();
     }
 
     public Member(MemberRequest body) {
