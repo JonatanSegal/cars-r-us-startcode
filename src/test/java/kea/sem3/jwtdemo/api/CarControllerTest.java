@@ -85,6 +85,7 @@ class CarControllerTest {
 
     }
 
+    /*
     @Test
     public void testAddCar() throws Exception {
         CarRequest newCar = new CarRequest("WW", "Polo", 200, 10);
@@ -126,6 +127,8 @@ class CarControllerTest {
         carRepository.delete(carToRepos);
         assertEquals(false, carRepository.equals(carToRepos));
     }
+
+     */
 }
 
 
